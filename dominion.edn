@@ -5,17 +5,17 @@
   :type    #{:action}
   :cost    [:coin 2]
   :actions [[:actions +1]
-            [:from :hand [:discard *] :to :discard]
-            [:from :deck [:draw *] :to :hand]]}
+            [:from :hand [:move * :cards] :to :discard]
+            [:from :deck [:move * :cards] :to :hand]]}
  {:card    :chapel
   :type    #{:action}
   :cost    [:coin 2]
   :actions [[:actions +1]
-            [:from :hand [:trash < 5]]]}
+            [:from :hand [:move < 5 :cards] :to :trash]]}
  {:card     :moat
   :type     #{:action :reaction}
   :cost     [:coin 2]
-  :actions  [:from :deck [:draw +2] :to :hand]
+  :actions  [:from :deck [:move 2 :cards] :to :hand]
   :reaction [[:optional?
               [:negate :attack]
               [:reveal]]]}
@@ -24,4 +24,4 @@
   :cost    [:coin 3]
   :actions [[:draw +1]
             [:action +1]
-            [:from :discard [:draw 1] :to :deck]]}]
+            [:from :discard [:move 1 :cards] :to :deck]]}]
