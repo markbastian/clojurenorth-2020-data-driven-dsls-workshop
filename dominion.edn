@@ -1,3 +1,6 @@
+;;Yes, it's all bad.
+;; How do you handle interactions + future states?
+;; I would typically put actions in logic and multimethod it. Perhaps not a great fit?
 [{:card    :cellar
   :type    #{:action}
   :cost    [:coin 2]
