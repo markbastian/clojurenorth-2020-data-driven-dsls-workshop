@@ -1,0 +1,26 @@
+[{:card    :cellar
+  :type    #{:action}
+  :cost    [:coin 2]
+  :actions [[:actions +1]
+            [:discard *]
+            [:draw *]]}
+ {:card    :chapel
+  :type    #{:action}
+  :cost    [:coin 2]
+  :actions [[:actions +1]
+            [:discard *]
+            [:draw *]]}
+ {:card     :moat
+  :type     #{:action :reaction}
+  :cost     [:coin 2]
+  :actions  [[:draw +2]]
+  :reaction [[:optional?
+              [:negate :attack]
+              [:reveal]]]}
+ {:card    :harbinger
+  :type    #{:action}
+  :cost    [:coin 3]
+  :actions [[:draw +1]
+            [:action +1]
+            [:from :discard [:draw 1]
+             :to :deck]]}]
