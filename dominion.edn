@@ -1,12 +1,22 @@
 ;;Yes, it's all bad.
 ;; How do you handle interactions + future states?
 ;; I would typically put actions in logic and multimethod it. Perhaps not a great fit?
-[{:card    :cellar
+[
+ ;; Are we just shuffling cards around?
+ {:card    :cellar
   :type    #{:action}
   :cost    [:coin 2]
   :actions [[:actions +1]
             [:from :hand [:move * :cards] :to :discard]
             [:from :deck [:move * :cards] :to :hand]]}
+ ;; Note prior version is too specific (e.g. discard)
+ {:card    :cellar
+  :type    #{:action}
+  :cost    [:coin 2]
+  :actions [[:actions +1]
+            [:from :hand [:discard *] :to :discard]
+            [:from :deck [:draw *] :to :hand]]}
+
  {:card    :chapel
   :type    #{:action}
   :cost    [:coin 2]
