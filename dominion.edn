@@ -7,15 +7,21 @@
   :type    #{:action}
   :cost    [:coin 2]
   :actions [[:actions +1]
+            ;Hmm, need a datalog-like syntax to capture *
+            ;Coud maybe just use a map with keys :from, :to, :what-to-move
             [:from :hand [:move * :cards] :to :discard]
             [:from :deck [:move * :cards] :to :hand]]}
- ;; Note prior version is too specific (e.g. discard)
+
+ ;; Note prior version (shown below) is too specific (e.g. discard).
+ ;; We're just moving stuff around.
  {:card    :cellar
   :type    #{:action}
   :cost    [:coin 2]
   :actions [[:actions +1]
             [:from :hand [:discard *] :to :discard]
             [:from :deck [:draw *] :to :hand]]}
+
+
 
  {:card    :chapel
   :type    #{:action}
